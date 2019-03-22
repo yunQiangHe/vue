@@ -5,23 +5,29 @@
         <h3 class="title">二手车</h3>
       </div>
 
-      <el-form-item label="username">
+      <el-form-item>
+        <span class="svg-container">
+          <svg-icon icon-class="user"/>
+        </span>
         <el-input v-model="form.username"></el-input>
       </el-form-item>
 
-      <el-form-item label="password">
-        <el-input v-model="form.password"></el-input>
+      <el-form-item>
+        <el-input v-model="form.password" type="password"></el-input>
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="handleLogin">登录</el-button>
+        <el-button type="primary" @click="handleLogin" icon="el-icon-search">登录</el-button>
+        <el-button type="primary" @click="handleLogin2">登录2</el-button>
+        <el-button type="primary" @click="add">++++++</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import { loginByUsername } from "@/api/login";
+import { loginByUsername, loginByUsername2 } from "@/api/login";
+import { mapState } from "vuex";
 
 export default {
   name: "Login",
@@ -35,9 +41,17 @@ export default {
   },
   methods: {
     handleLogin() {
-      loginByUsername("", "").then(res => {
+      loginByUsername("admin4", "admin4").then(res => {
         console.log(res.data.user_info);
       });
+    },
+    handleLogin2() {
+      loginByUsername2("1").then(res => {
+        console.log(res);
+      });
+    },
+    add() {
+      store.commit("increment");
     }
   }
 };
@@ -55,17 +69,10 @@ $light_gray: #eee;
   overflow: hidden;
   .login-form {
     position: relative;
-    width: 520px;
+    width: 420px;
     max-width: 100%;
     margin: 0 auto;
     overflow: hidden;
-    .title-container {
-      font-size: 26px;
-      color: $light_gray;
-      margin: 0px auto 40px auto;
-      text-align: center;
-      font-weight: bold;
-    }
   }
 }
 </style>

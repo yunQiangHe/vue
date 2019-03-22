@@ -15,3 +15,15 @@ export function loginByUsername(username, password) {
     })
 
 }
+
+// 获取用户信息详情
+export function loginByUsername2(user_id) {
+    const data = {
+        user_id:user_id
+    }
+    return request({
+        url: '/user/detail',
+        method: 'post',
+        data
+    })
+}
