@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <!-- 
+<!--     
     <header>
       <router-link to="/">Home</router-link> |
-      <router-link to="/blog">Blog</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/login">Login</router-link> 
-    </header>-->
+    </header> -->
     <transition>
       <keep-alive>
         <router-view></router-view>

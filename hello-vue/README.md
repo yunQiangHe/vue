@@ -98,3 +98,6 @@ const store = new Vuex.Store({
 export default store
 ```
 ## 3. [axios](https://github.com/axios/axios)
+* utils/request.js
+
+## 4.[svgo](https://panjiachen.github.io/vue-element-admin-site/zh/feature/script/svgo.html)

@@ -2,7 +2,7 @@
  * @Author: Heyunqiang 
  * @Date: 2019-03-21 10:19:02 
  * @Last Modified by: Heyunqiang
- * @Last Modified time: 2019-03-21 13:58:35
+ * @Last Modified time: 2019-03-26 00:19:03
  */
 // 封装了全局 request拦截器、response拦截器、统一的错误处理、统一做了超时处理、baseURL设置等
 
@@ -10,6 +10,8 @@ import axios from 'axios'
 import {
     Message
 } from 'element-ui'
+
+import {getToken} from '@/utils/auth';
 
 // create an axios instance 创建实例
 const service = axios.create({
@@ -24,7 +26,7 @@ service.interceptors.request.use(
         // 在发送请求之前做些什么
         // if(StorageEvent.getters.token){
         // 让每个请求携带token -- ['X-Token']为自定义key 请根据实际情况自行修改
-            config.headers["Authorization"] = "46977d9b6010bb996c4e7bd12b79cb533fb3c27d"
+            config.headers["Authorization"] = getToken();
         // }
         return config
     },

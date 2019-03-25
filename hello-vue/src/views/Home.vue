@@ -1,17 +1,23 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to home page"/>
+    <HelloWorld msg="我是helloworld组件"/>
+    <el-button type="primary" @click="test">test</el-button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
     HelloWorld
+  },
+  methods: {
+    test() {
+      
+    }
   }
-}
+};
 </script>
