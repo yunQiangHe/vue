@@ -1,4 +1,5 @@
-# vue-learn
+# car-vue-admin-template
+* 使用
 
 ## 1. [vue-cli](https://cli.vuejs.org/zh/)
 ##### 1.1 配置文件说明
@@ -101,3 +102,5 @@ export default store
 * utils/request.js
 
 ## 4.[svgo](https://panjiachen.github.io/vue-element-admin-site/zh/feature/script/svgo.html)
+
+## 5.[NProgress.js进度条](http://ricostacruz.com/nprogress/)
