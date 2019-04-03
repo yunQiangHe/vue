@@ -1,6 +1,6 @@
 // Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块
 
-import { login, getInfo} from '@/api/login'
+import { login, getUserInfo} from '@/api/login'
 import { getToken, setToken, removeToken} from '@/utils/auth'
 
 const user = {
@@ -20,17 +20,15 @@ const user = {
 
   actions: {
     // 登录
-    Login({
-      commit
-    }, userInfo) {
+    Login({ commit }, userInfo) {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         login(username, userInfo.password).then(response => {
           const data = response.data
-          // console.log("****");
           console.log(data);
           setToken(data.user_info.token)
           commit('SET_TOKEN', data.user_info.token)
+          debugger
           commit('SET_USER_ID', data.user_info.id)
           resolve()
         }).catch(error => {
@@ -40,12 +38,9 @@ const user = {
     },
 
     // 获取用户信息
-    GetInfo({
-      commit,
-      state
-    }) {
+    GetUserInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
-        getInfo(state.user_id).then(response => {
+        getUserInfo(state.user_id).then(response => {
           const data = response.data
           console.log("-----");
           console.log(data);

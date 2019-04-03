@@ -1,14 +1,5 @@
 # vue-learn
 
-* 声明式渲染 
-* 组件化
-* Vue实例
-* 生命周期钩子
-* 模板语法   插值 指令 (Directives) 缩写
-* 计算属性 和 侦听器
-* Class 与 Style 绑定
-* 条件渲染
-* 列表渲染
-* 事件处理
-* 表单输入绑定
-* 组件基础
+## car-vue-admin-template 是car后台
+
+## ES6 学习案列
