@@ -6,10 +6,42 @@
 </head>
 
 <body>
+    <ul>
+        <li>const定义的变量 <font style="color:red">不可以修改</font> 而且必须<font style="color:red">初始化</font>
+        </li>
+        <li>var定义的变量可以修改，如果不初始化会输出undefined，不会报错。</li>
+        <li>let是<font style="color:red">块级作用域</font>，函数内部使用let定义后，对函数外部无影响。</li>
+        <li>let的作用域是块，而var的作用域是函数</li>
+        <li>let 1不存在变量提升 2暂时性死区 3不允许重复声明</li>
+    </ul>
+    <h3>demo</h3>
+    <ol id="list"></ol>
+
     <script>
         var price = 100;
         let count = 0;
-        const BASE_URL = "http://baidu.com"
+        const BASE_URL = "http://baidu.com";
+
+        //const a; //Uncaught SyntaxError: Missing initializer in const declaration
+
+        /**
+         *  let 使用
+         */
+        // 1.for循环的计数器，就很合适使用let命令。
+        var list = document.getElementById("list");
+
+        for (let i = 0; i <= 3; i++) {
+            var item = document.createElement("li");
+            item.appendChild(document.createTextNode("Item" + i));
+
+            let j = i;
+            item.onclick = function (ev) {
+                console.log("Item " + j + " is Clicked");
+            }
+            list.appendChild(item);
+        }
+
+        // 2.在处理构造函数的时候，可以通过let声明而不是闭包来创建私有接口。
     </script>
 </body>
 
