@@ -9,9 +9,9 @@
       <!-- <todo-item v-for="item in lists" :item="item" :key="item">  属性传递参数 -->
       <todo-item v-for="item in lists" :key="item">
           <!-- <span v-slot:item style="font-size:20px;"> {{ item }} </span> 插槽  v-slot can only be used on components or <template>. -->
-            <template  v-slot:item>  <!-- 具名插槽 -->
+            <template  v-slot:item='itemProps'>  <!-- 具名插槽 -->
                 <!-- <span slot="item" style="font-size:20px;"> {{ item }} </span>  -->
-                <span  style="font-size:20px;"> {{ item }} </span> <!-- 插槽 -->
+                <span :style="{fontSize:'20px',color: itemProps.checked ? 'red':'blue'}"> {{ item }} </span> <!-- 插槽 -->
             </template>
       </todo-item>
     </ul>
