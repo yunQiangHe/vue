@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
-      <h3 class="title">car-vue-admin-template</h3>
+      <h3 class="title">东莞二手车管理系统</h3>
       <el-form-item prop="username">
         <!-- 注意这儿prop 不能少 -->
         <span class="svg-container">

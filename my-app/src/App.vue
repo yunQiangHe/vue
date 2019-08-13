@@ -1,13 +1,12 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <h1>{{ msg }}</h1>
     <input type="text" v-model="info">
     <button @click="handClick">添加</button>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <ul>
       <!-- <todo-item v-for="item in lists" :item="item" :key="item">  属性传递参数 -->
-      <todo-item v-for="item in lists" :key="item">
+      <todo-item v-for="item in lists" :key="item" @delete="handleDelete">
           <!-- <span v-slot:item style="font-size:20px;"> {{ item }} </span> 插槽  v-slot can only be used on components or <template>. -->
             <template  v-slot:item='itemProps'>  <!-- 具名插槽 -->
                 <!-- <span slot="item" style="font-size:20px;"> {{ item }} </span>  -->
@@ -39,6 +38,11 @@ export default {
     handClick(){
       this.lists.push(this.info);
       this.info = "";
+    },
+    handleDelete(item){
+      // findIndex()方法返回数组中满足提供的测试函数的第一个元素的索引。否则返回-1。
+      let index = this.lists.findIndex(text=>text === item);
+      this.lists.splice(index,1);
     }
   },
 };
