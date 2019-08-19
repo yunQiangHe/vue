@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /geektime-vue-1
-/es6
+/webpack/webpack-demo/node_modules
 
 # local env files
 .env.local
