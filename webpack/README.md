@@ -5,7 +5,7 @@
 ```
 1. mkdir webpack-demo && cd webpack-demo
 2. npm init -y
-# 如果你使用 webpack 4+ 版本，你还需要安装 CLI。
+  # 如果你使用 webpack 4+ 版本，你还需要安装 CLI。
 3. npm install webpack webpack-cli --save-dev
 4. 手写简单的webpack配置 npx webapck运行
 5. cnpm install --save-dev style-loader css-loader
@@ -23,27 +23,26 @@ $ npm install postcss-cssnext --save-dev
 $ npm install precss --save-dev
 
 # 在@import css文件的时候让webpack监听并编译
-$ npm install postcss-import --save-dev
-抽取了样式，就不能再用 style-loader注入到 html 中了。
-postcss.config.js
-module.exports = {
-    plugins: {
-        'autoprefixer': {
-            browsers: 'last 5 version'
-        }
-    }
-}
+  $ npm install postcss-import --save-dev
+  抽取了样式，就不能再用 style-loader注入到 html 中了。
+  postcss.config.js
+  module.exports = {
+      plugins: {
+          'autoprefixer': {
+              browsers: 'last 5 version'
+          }
+      }
+  }
 
 10. npm install --save-dev mini-css-extract-plugin
-
 11. npm i -D optimize-css-assets-webpack-plugin
-webpack5 貌似会内置 css 的压缩，webpack4 可以自己设置一个插件即可;
+  webpack5 貌似会内置 css 的压缩，webpack4 可以自己设置一个插件即可;
 12. npm i -D uglifyjs-webpack-plugin
-压缩需要一个插件： uglifyjs-webpack-plugin, 此插件需要一个前提就是：mode: 'production'
-13. 解决 CSS 文件或者 JS 文件名字哈希变化的问题
-cnpm install --save-dev html-webpack-plugin
+  压缩需要一个插件： uglifyjs-webpack-plugin, 此插件需要一个前提就是：mode: 'production'
+13. cnpm install --save-dev html-webpack-plugin
+  解决 CSS 文件或者 JS 文件名字哈希变化的问题
 14. npm install clean-webpack-plugin --save-dev
-清理 dist 目录
+  清理 dist 目录
 15. 加载图片与图片优化
 npm install --save-dev file-loader
 16. image-webpack-loader可以帮助我们对图片进行压缩和优化。
@@ -51,19 +50,19 @@ npm install image-webpack-loader --save-dev
 17. 更进一步处理图片成 base64
 cnpm install --save-dev url-loader
 18. npm install --save-dev webpack-merge
-合并两个webpack的js配置文件
-webpack-merge 的工具可以实现两个配置文件进合并，这样我们就可以把 开发环境和生产环境的公共配置抽取到一个公共的配置文件中。
-    - |- webpack.config.js
-    + |- webpack.common.js
-    + |- webpack.dev.js
-    + |- webpack.prod.js
+  合并两个webpack的js配置文件
+  webpack-merge 的工具可以实现两个配置文件进合并，这样我们就可以把 开发环境和生产环境的公共配置抽取到一个公共的配置文件中。
+      - |- webpack.config.js
+      + |- webpack.common.js
+      + |- webpack.dev.js
+      + |- webpack.prod.js
 19. 使用 inline-source-map 选项，这有助于解释说明 js 原始出错的位置。（不要用于生产环境）
-js 使用 source map
-当 webpack 打包源代码时，可能会很难追踪到错误和警告在源代码中的原始位置。例如，如果将三个源文件（a.js, b.js 和 c.js）打包到一个 bundle（bundle.js）中，而其中一个源文件包含一个错误，那么堆栈跟踪就会简单地指向到 bundle.js
-devtool: 'inline-source-map'
-20. 监控文件变化，自动编译。使用观察模式
-每次修改完毕后，都手动编译异常痛苦。最简单解决的办法就是启动watch。
-npx webpack --watch
+    js 使用 source map
+    当 webpack 打包源代码时，可能会很难追踪到错误和警告在源代码中的原始位置。例如，如果将三个源文件（a.js, b.js 和 c.js）打包到一个 bundle（bundle.js）中，而其中一个源文件包含一个错误，那么堆栈跟踪就会简单地指向到 bundle.js
+    devtool: 'inline-source-map'
+    20. 监控文件变化，自动编译。使用观察模式
+    每次修改完毕后，都手动编译异常痛苦。最简单解决的办法就是启动watch。
+    npx webpack --watch
 21. 使用 webpack-dev-server 和热更新
 devServer: {
   clientLogLevel: 'warning', // 可能的值有 none, error, warning 或者 info（默认值)
@@ -92,19 +91,19 @@ devServer: {
   }
 }
 22. JS启用babel转码
-虽然现代的浏览器已经兼容了96%以上的ES6的语法了，但是为了兼容老式的浏览器（IE8、9）我们需要把最新的ES6的语法转成ES5的。那么babel的loader就出场了。
-npm i -D babel-loader babel-core babel-preset-env
-touch .babelrc
-{
-  "presets": ["env"]
-}
-babel-loader可以配置如下几个options
-22. ESLint校验代码格式规范
-npm install eslint --save-dev
-npm install eslint-loader --save-dev
+  虽然现代的浏览器已经兼容了96%以上的ES6的语法了，但是为了兼容老式的浏览器（IE8、9）我们需要把最新的ES6的语法转成ES5的。那么babel的loader就出场了。
+  npm i -D babel-loader babel-core babel-preset-env
+  touch .babelrc
+  {
+    "presets": ["env"]
+  }
+  babel-loader可以配置如下几个options
+  22. ESLint校验代码格式规范
+  npm install eslint --save-dev
+  npm install eslint-loader --save-dev
 
-# 以下是用到的额外的需要安装的eslint的解释器、校验规则等
-npm i -D babel-eslint standard
+  # 以下是用到的额外的需要安装的eslint的解释器、校验规则等
+  npm i -D babel-eslint standard
 23. npm install --save-dev webpack-bundle-analyzer
-webpack-bundle-analyzer插件可以帮助我们分析打包后的图形化的报表。
+    webpack-bundle-analyzer插件可以帮助我们分析打包后的图形化的报表。
 ```
